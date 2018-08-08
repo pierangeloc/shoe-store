@@ -1,7 +1,8 @@
 package io.tuliplogic
 
-import io.tuliplogic.common.{Id, Url}
-import io.tuliplogic.pet.Pet
+import java.time.ZonedDateTime
+
+import io.tuliplogic.common.{Id, Url, Wrapped}
 import io.tuliplogic.shoes.ShoeModel
 
 object common {
@@ -15,7 +16,6 @@ object common {
 
 object multimedia {
 
-
   case class Metadata(
     photoUrl: Url,
   )
@@ -26,6 +26,7 @@ object multimedia {
   metadata: Metadata
   )
 }
+
 object shoes {
 
   case class Tag(id: Int, name: String)
@@ -35,5 +36,24 @@ object shoes {
     name: String,
     photoUrl: List[Url],
     tags: List[Tag]
+  )
+}
+
+object store {
+  case class ShoeSize(value: Int) extends Wrapped[Int]
+  case class Item(
+    sku: Id[Item],
+    shoeModelId: Id[ShoeModel],
+    size: ShoeSize,
+    quantity: Int
+  )
+
+  // order is very simple, it contains 1 sku in arbitrary quantity
+  case class Order(
+    id: Id[Order],
+    sku: Id[Item],
+    quantity: Int,
+    shipDate: ZonedDateTime,
+    status: String
   )
 }
