@@ -23,12 +23,18 @@ scalacOptions ++= Seq(
   , "-Xverify"
   , "-feature"
   ,"-Ypartial-unification"
-  ,"-Xfatal-warnings"
-  , "-language:_"
+//  ,"-Xfatal-warnings"
+  , "-language:_",
+    "-Ywarn-unused:implicits",           // Warn if an implicit parameter is unused.
+    "-Ywarn-unused:imports",             // Warn if an import selector is not referenced.
+    "-Ywarn-unused:locals",              // Warn if a local definition is unused.
+    "-Ywarn-unused:params",              // Warn if a value parameter is unused.
+    "-Ywarn-unused:patvars",             // Warn if a variable bound in a pattern is unused.
+    "-Ywarn-unused:privates",            // Warn if a private member is unused.
   //,"-optimise"
 )
 
-javacOptions ++= Seq("-Xlint:unchecked", "-Xlint:deprecation", "-source", "1.7", "-target", "1.7")
+//javacOptions ++= Seq("-Xlint:unchecked", "-Xlint:deprecation", "-source", "1.7", "-target", "1.7")
 
 // javaOptions in Universal ++= Seq(
 //   "-J-server",
@@ -44,9 +50,10 @@ val CatsEffectVersion = "1.0.0-RC2"
 val CirceVersion = "0.10.0-M1"
 val MonixVersion = "3.0.0-M3"
 val ScalaZVersion = "7.2.23"
-val ZIOVersion = "0.1-SNAPSHOT"
+val ZIOVersion = "0.1.0-SNAPSHOT"
 val ShapelessVersion = "2.3.3"
 val Fs2Version = "0.10.4"
+val Http4sVersion = "0.18.4"
 val MonocleVersion = "1.5.0"
 
 libraryDependencies ++= Seq(
@@ -64,9 +71,13 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-yaml" % "0.8.0",
   // Cats
   "org.typelevel" %% "cats-core" % CatsVersion,
-  "org.typelevel" %% "cats-effect" % CatsEffectVersion,
+//  "org.typelevel" %% "cats-effect" % CatsEffectVersion,
   // fs2
   "co.fs2" %% "fs2-core" % Fs2Version, // For cats 1.1.0 and cats-effect 0.10
+  // http4s
+  "org.http4s"            %% "http4s-blaze-server"  % Http4sVersion,
+  "org.http4s"            %% "http4s-circe"         % Http4sVersion,
+  "org.http4s"            %% "http4s-dsl"           % Http4sVersion,
   // monix
   "io.monix" %% "monix" % MonixVersion,
   // shapeless
@@ -77,7 +88,7 @@ libraryDependencies ++= Seq(
   // monocle
   "com.github.julien-truffaut" %%  "monocle-core"  % MonocleVersion,
   // type classes
-  "com.github.mpilquist" %% "simulacrum" % "0.12.0",
+  "com.github.mpilquist" %% "simulacrum" % "0.13.0",
   // li haoyi ammonite repl embed
   "com.lihaoyi" % "ammonite" % "1.1.2" % "test" cross CrossVersion.full
 
