@@ -20,6 +20,8 @@ object common {
   case class MultimediaServiceError(message: String) extends Error
   case class InventoryServiceError(message: String) extends Error
   case class GeneralError(message: String) extends Error
+
+  case class ConfigLoadException(message: String) extends Exception //This is required to work with Sync, but it would be nicer to have something like ZIO with custom error
 }
 
 object multimedia {

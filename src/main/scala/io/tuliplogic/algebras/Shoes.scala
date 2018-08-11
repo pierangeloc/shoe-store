@@ -3,6 +3,8 @@ package io.tuliplogic.algebras
 import io.tuliplogic.shoes.{ModelId, ShoeModel, Tag}
 import simulacrum.typeclass
 
+import scala.language.higherKinds
+
 /**
   *
   * event-sourcing-zio - 09/08/2018

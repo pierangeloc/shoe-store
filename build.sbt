@@ -13,6 +13,8 @@ lazy val eventsourcingzio = (project in file(".")).
 scalaVersion := "2.12.6"
 
 addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.6")
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+
 
 // These options will be used for *all* versions.
 scalacOptions ++= Seq(
@@ -55,6 +57,7 @@ val ShapelessVersion = "2.3.3"
 val Fs2Version = "0.10.4"
 val Http4sVersion = "0.18.4"
 val MonocleVersion = "1.5.0"
+val PureConfigVersion = "0.9.1"
 
 libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "1.3.1",
@@ -85,7 +88,9 @@ libraryDependencies ++= Seq(
   // scalaz
   "org.scalaz" %% "scalaz-core" % ScalaZVersion,
   "org.scalaz" %% "scalaz-zio" % ZIOVersion,
-  // monocle
+  //pureconfig
+  "com.github.pureconfig" %% "pureconfig" % PureConfigVersion,
+// monocle
   "com.github.julien-truffaut" %%  "monocle-core"  % MonocleVersion,
   // type classes
   "com.github.mpilquist" %% "simulacrum" % "0.13.0",

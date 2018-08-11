@@ -1,6 +1,8 @@
 # Simple shoes store with microservices
 
-Implementation of a simplified version of the classical Pet Store (https://petstore.swagger.io/#/), but rather than pets we trade shoes with 3 microservices:
+Implementation of a simplified version of the classical Pet Store (https://petstore.swagger.io/#/) in a microservice-based fashion, and rather than pets we trade shoes.
+
+Microservices are:
 
 1. Shoe Service (CRUD on Shoe models)
 1. Multimedia Service (CRUD on images of Shoes, can do maybe postprocessing or so)

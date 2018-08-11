@@ -5,6 +5,8 @@ import io.tuliplogic.shoes.ShoeModel
 import io.tuliplogic.store.{Item, ShoeSize, Sku}
 import simulacrum.typeclass
 
+import scala.language.higherKinds
+
 /**
   *
   * event-sourcing-zio - 09/08/2018

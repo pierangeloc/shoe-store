@@ -1,5 +1,8 @@
 package io.tuliplogic
 
+import cats.effect.Sync
+import io.tuliplogic.common.ConfigLoadException
+import pureconfig._
 import simulacrum.typeclass
 
 /**
@@ -18,16 +21,17 @@ object config {
 
   case class HttpConfig(baseUrl: String, hostname: String, port: Int)
 
+  @typeclass
   trait HttpConfigCapability[F[_]] {
     def getConfig: F[HttpConfig]
   }
 
-  object HttpConfigCapability {
-    def apply[F[_]](implicit F: HttpConfigCapability[F]): HttpConfigCapability[F] = F
-  }
+  def config[F[_]: Sync](service: String): F[(HttpConfig, DatabaseConfig)] = {
+    val resEither = for {
+        httpConfig <- loadConfig[HttpConfig](service)
+        dbConfig <- loadConfig[DatabaseConfig](service)
+      } yield (httpConfig, dbConfig)
 
-
-  object My extends App {
-    def summon[F[_]: HttpConfigCapability] = HttpConfigCapability[F]
+    resEither.fold(e => Sync[F].raiseError(ConfigLoadException(e.toString)), cfg => Sync[F].pure(cfg))
   }
 }
