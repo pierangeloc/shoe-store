@@ -1,9 +1,12 @@
 package io.tuliplogic
 
-import cats.effect.Sync
+import cats.effect.{IO, Sync}
 import io.tuliplogic.common.ConfigLoadException
+import io.tuliplogic.config.HttpConfig
 import pureconfig._
 import simulacrum.typeclass
+
+import scala.language.higherKinds
 
 /**
   *
@@ -28,10 +31,14 @@ object config {
 
   def config[F[_]: Sync](service: String): F[(HttpConfig, DatabaseConfig)] = {
     val resEither = for {
-        httpConfig <- loadConfig[HttpConfig](service)
-        dbConfig <- loadConfig[DatabaseConfig](service)
+        httpConfig <- loadConfig[HttpConfig](s"$service.http")
+        dbConfig <- loadConfig[DatabaseConfig](s"$service.db")
       } yield (httpConfig, dbConfig)
 
     resEither.fold(e => Sync[F].raiseError(ConfigLoadException(e.toString)), cfg => Sync[F].pure(cfg))
   }
+}
+
+object T extends App {
+  println(loadConfig[HttpConfig](s"shoes.http"))
 }

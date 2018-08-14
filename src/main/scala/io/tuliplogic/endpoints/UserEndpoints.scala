@@ -29,7 +29,7 @@ class UserEndpoints[F[_]: Effect](httpConfig: HttpConfig) extends Http4sDsl[F] {
         _ <- EitherT.liftF(users.add(userReq))
       } yield userReq
 
-      action.value.flatMap{
+      action.value.flatMap {
         case Left(error) => BadRequest(s"Something went wrong $error")
         case Right(user) => Ok(user.asJson)
       }
@@ -39,6 +39,6 @@ class UserEndpoints[F[_]: Effect](httpConfig: HttpConfig) extends Http4sDsl[F] {
 }
 
 object UserEndpoints {
-  def createUserEndpoints[F[_]: Effect: Users](httpConfig: HttpConfig): HttpService[F] =
+  def allEndpoints[F[_]: Effect: Users](httpConfig: HttpConfig): HttpService[F] =
     new UserEndpoints[F](httpConfig).endpoints
 }
