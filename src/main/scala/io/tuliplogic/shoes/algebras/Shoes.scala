@@ -1,6 +1,6 @@
-package io.tuliplogic.algebras
+package io.tuliplogic.shoes.algebras
 
-import io.tuliplogic.shoes.{ModelId, ShoeModel, Tag}
+import io.tuliplogic.shoes.model.{ModelId, ShoeModel, Tag}
 import simulacrum.typeclass
 
 import scala.language.higherKinds

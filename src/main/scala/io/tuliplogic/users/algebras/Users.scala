@@ -1,7 +1,7 @@
-package io.tuliplogic.algebras
+package io.tuliplogic.users.algebras
 
 import cats.effect.IO
-import io.tuliplogic.users.{User, UserId}
+import io.tuliplogic.users.model.{User, UserId}
 import simulacrum.typeclass
 
 import scala.language.higherKinds

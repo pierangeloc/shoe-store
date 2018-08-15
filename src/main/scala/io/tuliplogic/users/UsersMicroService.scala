@@ -1,18 +1,19 @@
-package io.tuliplogic
-
-import cats.implicits._
-import cats.effect._
-import fs2.StreamApp
-import fs2.Stream
+package io.tuliplogic.users
+import cats.effect.{Effect, IO}
 import fs2.StreamApp.ExitCode
-import io.tuliplogic.algebras.Users
-import io.tuliplogic.common.Error
-import io.tuliplogic.config.HttpConfigCapability
-import io.tuliplogic.endpoints.UserEndpoints
+import fs2.{Stream, StreamApp}
+import io.tuliplogic.commons.config
+import io.tuliplogic.commons.config.HttpConfigCapability
+import io.tuliplogic.users.algebras.Users
+import io.tuliplogic.users.endpoints.UserEndpoints
 import org.http4s.server.blaze.BlazeBuilder
-//import scalaz.zio.{App, IO}
 
-object ShoesMicroService extends StreamApp[IO] {
+/**
+ * 
+ * Default (Template) Project - 16/08/2018
+ * Created with ♥ in Amsterdam
+ */
+object UsersMicroService extends StreamApp[IO] {
 
   import scala.concurrent.ExecutionContext.Implicits.global
 //  type AppEffect[A] = IO[Error, A]

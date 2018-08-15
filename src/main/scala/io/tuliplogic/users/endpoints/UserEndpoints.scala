@@ -1,17 +1,19 @@
-package io.tuliplogic.endpoints
+package io.tuliplogic.users.endpoints
 
 import cats.effect.Effect
 import cats.data.EitherT
 import cats.implicits._
-import io.tuliplogic.algebras.Users
-import io.tuliplogic.common.UserServiceError
-import io.tuliplogic.config.HttpConfig
-import io.tuliplogic.users.User
+import io.tuliplogic.commons.config.HttpConfig
 import org.http4s.{EntityDecoder, HttpService}
 import org.http4s.dsl.Http4sDsl
 import org.http4s.circe._
 import io.circe.generic.auto._
 import io.circe.syntax._
+import io.tuliplogic.commons.model.UserServiceError
+import io.tuliplogic.users.algebras.Users
+import io.tuliplogic.users.model.User
+
+import scala.language.higherKinds
 
 /**
   *

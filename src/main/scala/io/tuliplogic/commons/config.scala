@@ -1,8 +1,8 @@
-package io.tuliplogic
+package io.tuliplogic.commons
 
-import cats.effect.{IO, Sync}
-import io.tuliplogic.common.ConfigLoadException
-import io.tuliplogic.config.HttpConfig
+import cats.effect.Sync
+import io.tuliplogic.commons.config.HttpConfig
+import io.tuliplogic.commons.model.ConfigLoadException
 import pureconfig._
 import simulacrum.typeclass
 

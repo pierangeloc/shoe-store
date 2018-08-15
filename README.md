@@ -15,3 +15,7 @@ Microservices are:
 - Stream: fs2 or akka-streams
 - Kafka for pubsub
 - Json for Kafka serialization, later: AVRO
+
+## Run it
+- Start UsersMicroService (TODO: provide full sbt cmd)
+- Send a request (I use HTTPie:  http POST `http POST http://127.0.0.1:9092/shoes id=user123  username=PaulAnka firstName=Paul lastName=Anka email=paulanka@gmail.com password=diana status=Active`)
