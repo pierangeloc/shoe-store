@@ -1,8 +1,14 @@
 package io.tuliplogic.commons.model
+import io.circe.{Decoder, Encoder}
 
 trait Wrapped[T] { def value: T }
 
 case class Id[T](id: Long)
+object Id {
+  implicit def encoder[A]: Encoder[Id[A]] = Encoder.encodeLong.contramap(_.id)
+  implicit def decoder[A]: Decoder[Id[A]] = Decoder.decodeLong.map(l =>Id[A](l))
+}
+
 case class Url(value: String) extends Wrapped[String]
 
 sealed trait Error {
