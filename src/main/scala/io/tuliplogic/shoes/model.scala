@@ -13,7 +13,7 @@ object model {
   case class ShoeModel(
     id: Id[ShoeModel],
     name: String,
-    photoUrl: List[Url],
+    photos: List[Url],
     tags: List[Tag]
   )
 }

@@ -54,8 +54,8 @@ val MonixVersion = "3.0.0-M3"
 val ScalaZVersion = "7.2.23"
 val ZIOVersion = "0.1.0-SNAPSHOT"
 val ShapelessVersion = "2.3.3"
-val Fs2Version = "0.10.4"
-val Http4sVersion = "0.18.4"
+val Fs2Version = "1.0.0-M5"
+val Http4sVersion = "0.19.0-SNAPSHOT"
 val MonocleVersion = "1.5.0"
 val PureConfigVersion = "0.9.1"
 
@@ -76,7 +76,7 @@ libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-core" % CatsVersion,
 //  "org.typelevel" %% "cats-effect" % CatsEffectVersion,
   // fs2
-  "co.fs2" %% "fs2-core" % Fs2Version, // For cats 1.1.0 and cats-effect 0.10
+//  "co.fs2" %% "fs2-core" % Fs2Version, // For cats 1.1.0 and cats-effect 0.10
   // http4s
   "org.http4s"            %% "http4s-blaze-server"  % Http4sVersion,
   "org.http4s"            %% "http4s-circe"         % Http4sVersion,

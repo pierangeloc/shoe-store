@@ -1,7 +1,6 @@
 package io.tuliplogic.commons
 
 import cats.effect.Sync
-import io.tuliplogic.commons.config.HttpConfig
 import io.tuliplogic.commons.model.ConfigLoadException
 import pureconfig._
 import simulacrum.typeclass
@@ -39,6 +38,3 @@ object config {
   }
 }
 
-object T extends App {
-  println(loadConfig[HttpConfig](s"shoes.http"))
-}
